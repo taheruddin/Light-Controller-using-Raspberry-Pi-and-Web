@@ -14,18 +14,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-
-//var_dump($states );
-
-
 function set_light($light, $value){
 	global $conn;
 	$sql = "UPDATE states SET $light = '$value'";
 	$conn->query($sql);
 } 
-
-
 
 if (isset($_GET['red'])) {
 	if ($_GET['red']=="1") {
@@ -55,21 +48,11 @@ if (isset($_GET['blue'])) {
 $sql = "SELECT * FROM states";
 $result = $conn->query($sql);
 $states = $result->fetch_assoc();
-//echo "status[red] = ".$states['red'];
 
 if (isset($_GET['need_for']) && $_GET['need_for']=="json") {
 	echo json_encode($states);
 	exit();
 }
-
-/*
-{
-	"red": 1,
-	"yellow": 1,
-	"blue": 1
-}
-*/
-
 
 ?>
 
@@ -114,7 +97,6 @@ if (isset($_GET['need_for']) && $_GET['need_for']=="json") {
           	<br>
           	<hr>
           	<br>
-          	
         </div>
     </div>
     	
